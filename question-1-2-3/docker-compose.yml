@@ -1,0 +1,24 @@
+version: "3.4"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      target: local
+    container_name: vietlabo-algorithm-app
+    volumes:
+      - ./:/var/www
+    expose:
+      - '9000'
+    environment:
+      PHP_OPCACHE_VALIDATE_TIMESTAMPS: 1
+      CONTAINER_ROLE: app
+    networks:
+      - default
+volumes:
+  mysql-data:
+     driver: local
+networks:
+ default:
+     driver: bridge
