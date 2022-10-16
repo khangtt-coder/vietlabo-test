@@ -7,7 +7,7 @@ How to run
 1. docker-compose up
 2. docker-compose exec app composer install
 
-Cách test
+How to test
 
 ./vendor/bin/phpunit tests/AnswerTest.php
 
@@ -21,4 +21,5 @@ How to run
 4. docker-compose exec app php artisan db:seed
 
 API routes
+
 I put APIs of the request on routes/api.php
