@@ -18,7 +18,10 @@ class UserController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        User::create($request->validated());
+        $data = $request->validated();
+        $data['password'] = Hash::make($data['password'] );
+
+        User::create($data);
         return response()->json(["message" => "register successfully"]);
     }
 
@@ -38,6 +41,7 @@ class UserController extends Controller
             $user->about_me = $request->input('about_me');
             $user->fullname = $request->input('fullname');
             $user->phone_number = $request->input('phone_number');
+            $user->save();
 
             return response()->json(["data" => $user]);
         }

@@ -26,10 +26,11 @@ class RegisterRequest extends FormRequest
         return [
             'user_name' => 'required|string|unique:users|max:24|regex:/^[a-zA-Z0-9_]+$/i',
             'fullname' => 'required|string|max:255',
-            'email' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:12',
-            'phone_number' => 'required|numeric|size:10',
+            'email' => 'required|email|max:255|unique:users,email',
+            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:12',
             'password' => 'required|max:255|min:6',
-            'password_confirmation' => 'required|same:password'
+            'password_confirmation' => 'required|same:password',
+            'about_me' => 'nullable'
         ];
     }
 }
